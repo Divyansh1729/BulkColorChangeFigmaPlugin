@@ -1,0 +1,2 @@
+# BulkColorChangeFigmaPlugin
+Bulkcolorchange figma pliugin
