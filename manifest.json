@@ -1,0 +1,9 @@
+{
+    "name": "Change Color",
+    "id": "change-color-plugin",
+    "api": "1.0.0",
+    "editorType": ["figma", "figjam"],
+    "main": "code.js",
+    "ui": "ui.html"
+  }
+  

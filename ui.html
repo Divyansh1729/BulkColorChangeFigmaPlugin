@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Inter, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        background: #2C2C2C;
+        color: white;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 500;
+      }
+      .close-btn {
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.8;
+      }
+      .close-btn:hover {
+        opacity: 1;
+      }
+      .content {
+        padding: 24px;
+      }
+      .selection-count {
+        font-size: 32px;
+        font-weight: 500;
+        margin-bottom: 24px;
+      }
+      .color-list {
+        margin-bottom: 24px;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      .color-item {
+        display: flex;
+        align-items: center;
+        padding: 16px;
+        background: #F5F5F5;
+        margin-bottom: 1px;
+      }
+      .item-number {
+        color: #888;
+        width: 40px;
+        font-size: 14px;
+      }
+      .element-name {
+        flex: 1;
+        font-size: 16px;
+      }
+      .color-preview {
+        width: 16px;
+        height: 16px;
+        border-radius: 2px;
+      }
+      button {
+        background: #0D99FF;
+        color: white;
+        border: none;
+        padding: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 500;
+      }
+      button:hover {
+        background: #0088ee;
+      }
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        padding: 24px;
+      }
+      .color-picker-modal {
+        background: white;
+        border-radius: 8px;
+        padding: 24px;
+      }
+      .modal-header {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 16px;
+      }
+      .color-picker-content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      #colorPicker {
+        width: 100%;
+        height: 200px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .color-values {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin: 16px 0;
+      }
+      .color-value-item {
+        background: #F5F5F5;
+        padding: 8px;
+        border-radius: 4px;
+      }
+      .color-value-label {
+        font-size: 12px;
+        color: #888;
+        margin-bottom: 4px;
+      }
+      .color-value-number {
+        font-size: 14px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Color Changer</h1>
+      <div class="close-btn" id="closePlugin">✕</div>
+    </div>
+    <div class="content">
+      <div class="selection-count" id="selectionCount"></div>
+      <div class="color-list" id="colorList"></div>
+      <button id="bulkColorChange">Bulk Color Change</button>
+    </div>
+    <div class="modal-overlay" id="colorPickerModal">
+      <div class="color-picker-modal">
+        <div class="modal-header">
+          <div class="close-btn" id="closeColorPicker">✕</div>
+        </div>
+        <div class="color-picker-content">
+          <input type="color" id="colorPicker">
+          <div class="color-values">
+            <div class="color-value-item">
+              <div class="color-value-label">Hex</div>
+              <div class="color-value-number" id="hexValue">#000000</div>
+            </div>
+            <div class="color-value-item">
+              <div class="color-value-label">R</div>
+              <div class="color-value-number" id="rValue">0</div>
+            </div>
+            <div class="color-value-item">
+              <div class="color-value-label">G</div>
+              <div class="color-value-number" id="gValue">0</div>
+            </div>
+            <div class="color-value-item">
+              <div class="color-value-label">B</div>
+              <div class="color-value-number" id="bValue">0</div>
+            </div>
+          </div>
+          <button id="applyColor">Apply color</button>
+        </div>
+      </div>
+    </div>
+    <script src="ui.js"></script>
+  </body>
+</html>
